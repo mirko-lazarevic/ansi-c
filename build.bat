@@ -3,5 +3,8 @@
 set opts=-FC -GR- -EHa- -nologo -Zi
 set code=%cd%
 pushd build
-cl %opts% %code%\main.cpp -Femain.exe
+
+for %%f in (%code%\*.cpp) do (
+  cl %opts% %code%\%%~nf.cpp -Fe%%~nf.exe
+)
 popd
